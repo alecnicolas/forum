@@ -1,9 +1,9 @@
-package com.ForumServer;
+package com.ForumServer.model;
 
-public class Post {
+public class ForumPost {
     private final String author, content;
 
-    public Post(String author, String content) {
+    public ForumPost(String author, String content) {
         this.author = author;
         this.content = content;
     }

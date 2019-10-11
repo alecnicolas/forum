@@ -1,4 +1,4 @@
-package com.ForumServer;
+package com.ForumServer.model;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
