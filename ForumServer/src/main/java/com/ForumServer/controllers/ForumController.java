@@ -14,7 +14,7 @@ public class ForumController {
 
     @Autowired
     ForumPostRepository forumPostRespository;
-
+    
     @GetMapping("/get_posts")
     public @ResponseBody Iterable<ForumPost> getPosts() {
         return forumPostRespository.findAll();
