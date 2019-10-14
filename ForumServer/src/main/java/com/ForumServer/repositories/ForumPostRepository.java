@@ -9,5 +9,4 @@ import com.ForumServer.entities.ForumPost;;
 // CRUD refers Create, Read, Update, Delete
 @Repository
 public interface ForumPostRepository extends JpaRepository<ForumPost, Integer> {
-
 }
