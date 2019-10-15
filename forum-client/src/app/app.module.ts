@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { ForumInputComponent } from './forum-input/forum-input.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ForumPostService } from './services/forum-post.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +17,14 @@ import { ForumInputComponent } from './forum-input/forum-input.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [ForumPostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
