@@ -60,7 +60,7 @@
 	</dependencies>
 
 	<build>
-		<plugin>
+		<plugins>
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
@@ -103,7 +103,7 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
 		    </plugin> -->
-		</plugin>
+		</plugins>
 	</build>
 
 </project>
