@@ -8,7 +8,7 @@ export class ForumPostService {
   private forumPostUrl: string;
 
   constructor(private http: HttpClient) {
-    this.forumPostUrl = '//localhost:8080';
+    this.forumPostUrl = '//forum-586.appspot.com/';
   }
 
   public findAll(): Observable<ForumPost[]> {
