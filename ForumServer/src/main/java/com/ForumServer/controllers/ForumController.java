@@ -12,7 +12,7 @@ import com.ForumServer.repositories.ForumPostRepository;
 import com.ForumServer.entities.ForumPost;;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://forum-app-586.netlify.com")
 public class ForumController {
     @Autowired
     ForumPostRepository forumPostRespository;
