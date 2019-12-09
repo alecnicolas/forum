@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ForumServer</name>
 	<description>Forum Server</description>
+    <packaging>war</packaging>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -84,6 +85,11 @@
 						<artifactId>spring-restdocs-asciidoctor</artifactId>
 						<version>${spring-restdocs.version}</version>
 					</dependency>
+                    <dependency>
+			            <groupId>org.springframework.cloud</groupId>
+                        <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
+                        <version>1.0.0.RELEASE</version>
+                    </dependency>
 				</dependencies>
 			</plugin>
 			<plugin>
@@ -94,6 +100,10 @@
                 <groupId>com.google.appengine</groupId>
                 <artifactId>appengine-maven-plugin</artifactId>
                 <version>1.9.77</version>
+                <configuration>
+                    <deploy.version>1</deploy.version>
+                    <projectId>forum-586</projectId>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -103,6 +113,11 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
 		    </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.3.7.v20160115</version>
+            </plugin>
 		</plugins>
 	</build>
 
