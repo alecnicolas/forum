@@ -9,11 +9,11 @@ import { ForumInputComponent } from './forum-input/forum-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForumPostService } from './services/forum-post.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PostCardModule } from './post-card/post-card.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ForumInputComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    PostCardModule,
   ],
   providers: [ForumPostService],
   bootstrap: [AppComponent]

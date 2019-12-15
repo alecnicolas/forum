@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ForumPostService } from './services/forum-post.service';
-import { ForumPost } from './forum-post';
+import { ForumPost } from './types/forum-post';
 
 @Component({
   selector: 'app-root',
