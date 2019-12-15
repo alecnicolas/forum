@@ -1,39 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { ForumPostService } from './services/forum-post.service';
-import { ForumPost } from './types/forum-post';
+import { OktaAuthService } from '@okta/okta-angular';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
   title = 'forum-client';
+  isAuthenticated: boolean;
 
-  constructor(private forumPostService: ForumPostService) { }
+  constructor(
+    public oktaAuth: OktaAuthService,
+    private router: Router
+  ) {}
 
-  postForm = new FormGroup({
-    author: new FormControl(''),
-    content: new FormControl('')
-  });
-
-  currentPosts: ForumPost[];
-
-  ngOnInit() { this.onRequest(); }
-
-  onSubmit() {
-    this.forumPostService.save(this.postForm.value).subscribe();
-    this.onClear();
+  async ngOnInit() {
+    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+    this.oktaAuth.$authenticationState.subscribe(
+      (isAuthenticated: boolean) => {
+        (this.isAuthenticated = isAuthenticated);
+      }
+    );
   }
 
-  onRequest() {
-    this.forumPostService.findAll().subscribe( data => {
-      this.currentPosts = data;
-    });
-  }
-
-  onClear() {
-    this.postForm.reset();
+  logout() {
+    this.oktaAuth.logout();
+    this.router.navigateByUrl('/home');
   }
 }

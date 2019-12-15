@@ -4,7 +4,7 @@ import { ForumPostService } from '../services/forum-post.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: "app-post-card",
+  selector: 'app-post-card',
   template: `
     <mat-card-header>
       {{ post.author }}
@@ -74,15 +74,15 @@ export class PostCardComponent {
   constructor(private forumPostService: ForumPostService) {}
 
   editForm = new FormGroup({
-    content: new FormControl("")
+    content: new FormControl('')
   });
 
-  onEdit() {
-    this.forumPostService.editPost(this.editForm.value).subscribe();
+  async onEdit() {
+    (await this.forumPostService.editPost(this.editForm.value)).subscribe();
     this.editForm.reset();
   }
 
-  onDelete(id: number) {
-    this.forumPostService.deletePost(id).subscribe();
+  async onDelete(id: number) {
+    (await this.forumPostService.deletePost(id)).subscribe();
   }
 }

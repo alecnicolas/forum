@@ -1,36 +1,57 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent } from '@angular/common/http';
 import { ForumPost, EditPost } from '../types/forum-post';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { OktaAuthService } from '@okta/okta-angular';
 
-const httpOptions = {
-   headers: new HttpHeaders({
-     'Content-Type': 'application/json'
-   }),
-   observe: 'response' as 'body'
- };
 @Injectable()
 export class ForumPostService {
   private forumPostUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private oktaAuth: OktaAuthService) {
     this.forumPostUrl = environment.db_host;
   }
 
-  public findAll(): Observable<ForumPost[]> {
-    return this.http.get<ForumPost[]>(this.forumPostUrl + '/get_posts');
+  public async findAll() {
+    const token = await this.oktaAuth.getAccessToken();
+    const headers = new HttpHeaders({
+      Authorization: "Bearer " + token
+    });
+    let fuck = this.http.get<ForumPost[]>(
+      this.forumPostUrl + '/get_posts'
+    );
+    console.log(fuck.subscribe());
+    return fuck;
   }
 
-  public deletePost(id: number) {
-    return this.http.delete(this.forumPostUrl + '/delete_post/' + id);
+  public async deletePost(id: number) {
+    const token = await this.oktaAuth.getAccessToken();
+    const headers = new HttpHeaders({
+        Authorization: 'Bearer ' + token
+    });
+    return this.http.delete(
+      this.forumPostUrl + '/delete_post/' + id,
+      { headers }
+    );
   }
 
-  public editPost(post: EditPost) {
-    return this.http.put(this.forumPostUrl + '/edit', post);
+  public async editPost(post: EditPost) {
+    const token = await this.oktaAuth.getAccessToken();
+    const headers = new HttpHeaders({
+      Authorization: "Bearer " + token
+    });
+    return this.http.put(this.forumPostUrl + '/edit', post, {headers});
   }
 
-  public save(post: ForumPost) {
-    return this.http.post<ForumPost>(this.forumPostUrl + '/new_post', post);
+  public async save(post: ForumPost) {
+    const token = await this.oktaAuth.getAccessToken();
+    const headers = new HttpHeaders({
+      Authorization: "Bearer " + token
+    });
+    return this.http.post<ForumPost>(
+      this.forumPostUrl + '/new_post',
+      post,
+      {headers}
+    );
   }
 }

@@ -1,0 +1,51 @@
+<div class="container">
+  <form [formGroup]="postForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Create a New Post</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="form-container">
+          <mat-form-field appearance="standard" style="max-width: 300px;">
+            <label>
+              <input
+                matInput
+                type="text"
+                formControlName="author"
+                placeholder="Username"
+              />
+            </label>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea
+              matInput
+              type="text"
+              formControlName="content"
+              placeholder="Text"
+            ></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-flat-button color="basic" type="button" (click)="onClear()">
+          CLEAR
+        </button>
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="!postForm.valid"
+        >
+          POST
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  <button mat-raised-button color="primary" type="button" (click)="onRequest()">
+    GET ALL
+  </button>
+
+  <mat-card *ngFor="let post of currentPosts" type="post">
+    <app-post-card [post]="post"></app-post-card>
+  </mat-card>
+</div>
