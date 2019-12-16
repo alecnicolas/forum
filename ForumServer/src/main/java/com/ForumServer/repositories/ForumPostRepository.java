@@ -14,5 +14,6 @@ import com.ForumServer.entities.ForumPost;
 @CrossOrigin(origins = "//localhost:4200")
 // @CrossOrigin(origins = "https://forum-app-586.netlify.com")
 public interface ForumPostRepository extends JpaRepository<ForumPost, Integer> {
-    List<ForumPost> findByEmail(String email);
+    List<ForumPost> findByEmailOrderByIdDesc(String email);
+    List<ForumPost> findByOrderByIdDesc();
 }

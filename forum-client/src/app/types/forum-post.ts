@@ -1,4 +1,5 @@
 export class User {
+  id: number;
   email: string;
   firstName: string;
   lastName: string;
@@ -6,7 +7,6 @@ export class User {
 
 export class ForumPost {
   id: number;
-  nickname: string;
   email: string;
   content: string;
 }

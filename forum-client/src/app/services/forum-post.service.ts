@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders, HttpEvent } from '@angular/common/http';
 import { ForumPost, EditPost } from '../types/forum-post';
 import { environment } from 'src/environments/environment';
 import { OktaAuthService } from '@okta/okta-angular';
+import { UserService } from './user.service';
 
 @Injectable()
 export class ForumPostService {
   private forumPostUrl: string;
   private headers: HttpHeaders;
 
-  constructor(private http: HttpClient, private oktaAuth: OktaAuthService) {
+  constructor(private http: HttpClient, private oktaAuth: OktaAuthService, private userService: UserService) {
     this.forumPostUrl = environment.db_host;
   }
 
@@ -26,6 +27,13 @@ export class ForumPostService {
     });
   }
 
+  public async findMine() {
+    const headers = this.headers;
+    return this.http.get<ForumPost[]>(this.forumPostUrl + '/get_posts/' + this.userService.getUser().email, {
+      headers
+    });
+  }
+
   public async deletePost(id: number) {
     const headers = this.headers;
     return this.http.delete(this.forumPostUrl + '/delete_post/' + id, {
@@ -38,9 +46,9 @@ export class ForumPostService {
     return this.http.put(this.forumPostUrl + '/edit', post, { headers });
   }
 
-  public async save(post: ForumPost) {
+  public async save(id: number, post: ForumPost) {
     const headers = this.headers;
-    return this.http.post<ForumPost>(this.forumPostUrl + '/new_post', post, {
+    return this.http.post<ForumPost>(this.forumPostUrl + '/new_post/' + id.toString(), post, {
       headers
     });
   }

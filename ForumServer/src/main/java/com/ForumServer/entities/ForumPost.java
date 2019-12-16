@@ -27,6 +27,10 @@ public class ForumPost {
         return this.content;
     }
 
+    public User getUser() {
+        return this.user;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -37,6 +41,14 @@ public class ForumPost {
 
     public void setContent(String content){
         this.content = content;
+    }
+
+    public void setUser(User user){
+        this.user = user;
+    }
+
+    public String toString() {
+        return "Post: { email: " + this.email + ", content: " + this.content + "}";
     }
 
 }

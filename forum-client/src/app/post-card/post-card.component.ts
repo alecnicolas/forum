@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ForumPost, EditPost } from '../types/forum-post';
 import { ForumPostService } from '../services/forum-post.service';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -68,6 +68,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class PostCardComponent {
   @Input() post: ForumPost;
+  @Output() refresh = new EventEmitter();
 
   editing: boolean;
 
@@ -84,10 +85,12 @@ export class PostCardComponent {
     };
     (await this.forumPostService.editPost(newPost)).subscribe();
     this.editing = false;
+    this.refresh.emit();
     this.editForm.reset();
   }
 
   async onDelete(id: number) {
     (await this.forumPostService.deletePost(id)).subscribe();
+    this.refresh.emit();
   }
 }

@@ -29,32 +29,53 @@ import com.ForumServer.entities.User;
 public class ForumController {
     @Autowired
     ForumPostRepository forumPostRespository;
+
+    @Autowired
     UserRepository userRepository;
 
     @GetMapping("/check-user/{userEmail}")
-    public @ResponseBody User getUser(@PathVariable ("userEmail") String email){
-        return userRepository.findFirstByEmail(email);
+    public @ResponseBody Integer getUser(@PathVariable ("userEmail") String email){
+        User user =  userRepository.findFirstByEmail(email);
+        if(user != null){
+            return user.getId();
+        }
+        else{
+            return -1;
+        }
     }
 
     @PostMapping("/create-user")
+    @ResponseBody
     public Integer createUsers(@RequestBody User user){
-        return -1;
+        User old = userRepository.findFirstByEmail(user.getEmail());
+        if( old != null){
+            return old.getId();
+        }
+        else{
+            userRepository.save(user);
+        }
+
+        return user.getId();
     }
 
     @GetMapping("/get_posts")
     public @ResponseBody List<ForumPost> getPosts() {
-        return forumPostRespository.findAll();
+        return forumPostRespository.findByOrderByIdDesc();
     }
 
     @GetMapping("/get_posts/{userEmail}")
     public @ResponseBody List<ForumPost> getPostsByEmail(@PathVariable (value = "userEmail") String email){
-        return forumPostRespository.findByEmail(email);
+        return forumPostRespository.findByEmailOrderByIdDesc(email);
     }
 
-    @PostMapping("/new_post")
+    @PostMapping("/new_post/{userId}")
     @ResponseBody
-    public Integer createPost(@RequestBody ForumPost post) {
-        forumPostRespository.save(post);
+    public Integer createPost(@PathVariable ("userId") Integer userId, @RequestBody ForumPost post) {
+        System.out.println("HELLO!!!!!!!!!?????????????????!!!!!!!!!!!!" + post.toString());
+        userRepository.findById(userId).map( user -> {
+            post.setUser(user);
+            return forumPostRespository.save(post);
+        });
         return post.getId();
     }
 

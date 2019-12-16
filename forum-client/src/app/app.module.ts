@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostCardModule } from './post-card/post-card.module';
 import { AuthRoutingModule } from "./auth-routing.module";
 import { ForumViewComponent } from './forum-view/forum-view.component';
+import { UserService } from './services/user.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,7 @@ import { ForumViewComponent } from './forum-view/forum-view.component';
     PostCardModule,
     AuthRoutingModule,
   ],
-  providers: [ForumPostService],
+  providers: [ForumPostService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
