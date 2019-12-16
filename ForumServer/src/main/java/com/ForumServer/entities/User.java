@@ -10,32 +10,40 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer userId;
 
-    private String email;
-    private ForumPost[] posts;
+    private String email, firstName, lastName;
 
     public Integer getId() {
-        return id;
+        return this.userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getFirstName() {
+        return this.firstName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getlastName() {
+        return this.lastName;
     }
 
-    public void setPosts(ForumPost[] posts){
-        this.posts = posts;
+    public String getName() {
+        return this.firstName + " " + this.lastName;
     }
 
     public String getEmail() {
         return this.email;
     }
 
-    public ForumPost[] getPosts() {
-        return this.posts;
+    public void setId(Integer id) {
+        this.userId = id;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
 }

@@ -33,7 +33,6 @@ export class ForumViewComponent implements OnInit {
 
   async onRequest() {
     (await this.forumPostService.findAll()).subscribe(data => {
-      console.log("help", data);
       this.currentPosts = data;
     }, (err: any) => {
       console.error(err);

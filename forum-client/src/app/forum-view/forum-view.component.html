@@ -45,7 +45,7 @@
     GET ALL
   </button>
 
-  <mat-card *ngFor="let post of currentPosts" type="post">
+  <mat-card *ngFor="let post of currentPosts" type="post" class="post-card">
     <app-post-card [post]="post"></app-post-card>
   </mat-card>
 </div>

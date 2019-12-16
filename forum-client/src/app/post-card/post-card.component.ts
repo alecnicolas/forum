@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { ForumPost } from '../types/forum-post';
+import { ForumPost, EditPost } from '../types/forum-post';
 import { ForumPostService } from '../services/forum-post.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-post-card',
+  selector: "app-post-card",
   template: `
     <mat-card-header>
-      {{ post.author }}
+      <mat-card-title>{{ post.email }}</mat-card-title>
     </mat-card-header>
     <mat-card-content *ngIf="!editing">
       {{ post.content }}
@@ -74,11 +74,16 @@ export class PostCardComponent {
   constructor(private forumPostService: ForumPostService) {}
 
   editForm = new FormGroup({
-    content: new FormControl('')
+    content: new FormControl("")
   });
 
   async onEdit() {
-    (await this.forumPostService.editPost(this.editForm.value)).subscribe();
+    const newPost: EditPost = {
+      id: this.post.id,
+      content: this.editForm.value.content
+    };
+    (await this.forumPostService.editPost(newPost)).subscribe();
+    this.editing = false;
     this.editForm.reset();
   }
 

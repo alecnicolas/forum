@@ -1,9 +1,6 @@
 package com.ForumServer.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ForumPost {
@@ -12,29 +9,34 @@ public class ForumPost {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     
-    private String author, content;
+    private String email, content;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "userId", nullable = false)
+    private User user;
 
     public Integer getId() {
-        return id;
+        return this.id;
+    }
+    
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getContent() {
+        return this.content;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setAuthor(String author){
-        this.author = author;
+    public void setEmail(String email){
+        this.email = email;
     }
 
     public void setContent(String content){
         this.content = content;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getContent() {
-        return content;
-    }
 }

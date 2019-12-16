@@ -1,6 +1,13 @@
+export class User {
+  email: string;
+  firstName: string;
+  lastName: string;
+}
+
 export class ForumPost {
   id: number;
-  author: string;
+  nickname: string;
+  email: string;
   content: string;
 }
 
