@@ -24,7 +24,7 @@ import com.ForumServer.entities.ForumPost;
 import com.ForumServer.entities.User;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+// @CrossOrigin(origins = "http://localhost:4200")
 @CrossOrigin(origins = "https://forum-app-586.netlify.com")
 public class ForumController {
     @Autowired
