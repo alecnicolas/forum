@@ -12,7 +12,7 @@ import com.ForumServer.entities.ForumPost;
 // CRUD refers Create, Read, Update, Delete
 @Repository
 // @CrossOrigin(origins = "//localhost:4200")
-@CrossOrigin(origins = "https://forum-app-586.netlify.com")
+// @CrossOrigin(origins = "https://forum-app-586.netlify.com")
 public interface ForumPostRepository extends JpaRepository<ForumPost, Integer> {
     List<ForumPost> findByEmailOrderByIdDesc(String email);
     List<ForumPost> findByOrderByIdDesc();
