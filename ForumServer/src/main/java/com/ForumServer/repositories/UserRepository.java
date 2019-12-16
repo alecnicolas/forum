@@ -8,7 +8,7 @@ import com.ForumServer.entities.User;
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete
 @Repository
-// @CrossOrigin(origins = "https://forum-app-586.netlify.com")
+@CrossOrigin(origins = "https://forum-app-586.netlify.com")
 public interface UserRepository extends JpaRepository<User, Integer> {
     public User findFirstByEmail(String email);
 }
