@@ -30,10 +30,10 @@ Hosted [here](https://forum-app-586.netlify.com/)
 - Can create an account through Okta or use the provided login below.
 
 
-### Login Info:
+##### Login Info:
 
 - User: john.doe@example.com
 - Password: Password1!
-
+---
 - Alt User: howard.washington@example.com
 - Alt Password: Password1!
