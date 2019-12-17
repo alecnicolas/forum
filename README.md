@@ -2,7 +2,10 @@
 
 Forum application that shows a feed of all user posts. Also will allow to filter by email.
 
-Using:
+`GET ALL` fetches all forum posts.
+`GET MINE` fetches all forum posts associated with the logged in user.
+
+Tools:
 - Spring
 - Angular
 - MySQL
