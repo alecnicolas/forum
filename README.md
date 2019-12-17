@@ -2,6 +2,12 @@
 
 Forum application that shows a feed of all user posts. Also will allow to filter by email.
 
+Using:
+- Spring
+- Angular
+- MySQL
+- Okta
+
 Hosted here: https://forum-app-586.netlify.com/
 
 
