@@ -8,12 +8,12 @@ import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
 import { AuthInterceptor } from './shared/okta/auth.interceptor';
 
 const oktaConfig = {
-  url: 'https://dev-865752.okta.com',
-  issuer: 'https://dev-865752.okta.com/oauth2/default',
-  redirectUri: 'http://localhost:4200/implicit/callback',
-  clientId: '0oa27r0obnO2VRZlV357',
+  url: "https://dev-865752.okta.com",
+  issuer: "https://dev-865752.okta.com/oauth2/default",
+  redirectUri: "https://forum-app-586.netlify.com/implicit/callback",
+  clientId: "0oa27r0obnO2VRZlV357",
   pkce: true,
-  scope: ['openid', 'profile', 'email']
+  scope: ["openid", "profile", "email"]
 };
 
 const routes: Routes = [
