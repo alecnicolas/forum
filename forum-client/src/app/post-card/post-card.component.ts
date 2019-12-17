@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { ForumPost, EditPost } from '../types/forum-post';
 import { ForumPostService } from '../services/forum-post.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: "app-post-card",
@@ -12,7 +13,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     <mat-card-content *ngIf="!editing">
       {{ post.content }}
     </mat-card-content>
-    <mat-card-actions *ngIf="!editing" align="end">
+    <mat-card-actions *ngIf="!editing && matched" align="end">
       <button
         mat-mini-fab
         color="accent"
@@ -66,17 +67,22 @@ import { FormGroup, FormControl } from '@angular/forms';
     </form>
   `
 })
-export class PostCardComponent {
+export class PostCardComponent implements OnInit {
   @Input() post: ForumPost;
   @Output() refresh = new EventEmitter();
 
   editing: boolean;
+  matched: boolean;
 
-  constructor(private forumPostService: ForumPostService) {}
+  constructor(private forumPostService: ForumPostService, private userService: UserService) {}
 
   editForm = new FormGroup({
     content: new FormControl("")
   });
+
+  ngOnInit() {
+    this.matched = this.post.email === this.userService.getUser().email;
+  }
 
   async onEdit() {
     const newPost: EditPost = {
