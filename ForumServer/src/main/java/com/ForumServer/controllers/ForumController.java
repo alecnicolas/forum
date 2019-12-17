@@ -71,7 +71,6 @@ public class ForumController {
     @PostMapping("/new_post/{userId}")
     @ResponseBody
     public Integer createPost(@PathVariable ("userId") Integer userId, @RequestBody ForumPost post) {
-        System.out.println("HELLO!!!!!!!!!?????????????????!!!!!!!!!!!!" + post.toString());
         userRepository.findById(userId).map( user -> {
             post.setUser(user);
             return forumPostRespository.save(post);
