@@ -39,6 +39,6 @@
   </button>
 
   <mat-card *ngFor="let post of currentPosts" type="post" class="post-card">
-    <app-post-card [post]="post" (refresh)="onRequest()"></app-post-card>
+    <app-post-card [post]="post" [email]="this.user.email" (refresh)="onRequest()"></app-post-card>
   </mat-card>
 </div>

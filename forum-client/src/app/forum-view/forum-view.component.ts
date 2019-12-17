@@ -2,7 +2,7 @@ import { Component, OnInit, AfterContentChecked, AfterViewInit } from '@angular/
 import { FormGroup, FormControl } from '@angular/forms';
 import { ForumPostService } from '../services/forum-post.service';
 import { UserService } from '../services/user.service';
-import { ForumPost } from '../types/forum-post';
+import { ForumPost, User } from '../types/forum-post';
 
 @Component({
   selector: 'app-forum-view',
@@ -11,6 +11,7 @@ import { ForumPost } from '../types/forum-post';
 })
 export class ForumViewComponent implements OnInit, AfterViewInit {
   title = 'forum-view';
+  user: User;
 
   constructor(
     private forumPostService: ForumPostService,
@@ -68,6 +69,7 @@ export class ForumViewComponent implements OnInit, AfterViewInit {
   async saveUser() {
     this.userService.setUser();
     (await this.userService.createUser()).subscribe(data => this.userService.setId(data));
+    this.user = this.userService.getUser();
   }
 
   onClear() {

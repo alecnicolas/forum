@@ -69,6 +69,7 @@ import { UserService } from '../services/user.service';
 })
 export class PostCardComponent implements OnInit {
   @Input() post: ForumPost;
+  @Input() email: string;
   @Output() refresh = new EventEmitter();
 
   editing: boolean;
@@ -81,7 +82,7 @@ export class PostCardComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.matched = this.post.email === this.userService.getUser().email;
+    this.matched = this.post.email === this.email;
   }
 
   async onEdit() {
