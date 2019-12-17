@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  db_host: '//localhost:8080'
+  db_host: "https://forum-586.appspot.com"
 };
 
 /*
