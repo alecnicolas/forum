@@ -19,6 +19,9 @@ Hosted [here](https://forum-app-586.netlify.com/)
 - Using Okta for authentication and authorization. (Check Local Storage for token)
 - Continous deployment. (Netlify)
 - Many-to-One relationship between ForumPost and User tables. (Found in ForumPost.java entity)
+- Spring provides ORM (JPA) and Dependency Injection
+- Angular SPA and Dependency Injection
+
 
 ###### General
 - Each account is only able to delete or edit its own posts.
