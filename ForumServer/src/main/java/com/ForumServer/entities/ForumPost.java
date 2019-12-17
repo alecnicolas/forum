@@ -15,6 +15,11 @@ public class ForumPost {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
+    public ForumPost(String email, String content){
+        this.email = email;
+        this.content = content;
+    }
+
     public Integer getId() {
         return this.id;
     }

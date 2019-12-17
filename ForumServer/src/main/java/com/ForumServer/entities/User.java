@@ -14,6 +14,8 @@ public class User {
 
     private String email, firstName, lastName;
 
+    public User(String email, String firstName, String lastName, Integer userId)
+
     public Integer getId() {
         return this.userId;
     }
