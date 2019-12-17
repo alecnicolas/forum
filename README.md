@@ -21,6 +21,8 @@ Hosted [here](https://forum-app-586.netlify.com/)
 - Many-to-One relationship between ForumPost and User tables. (Found in ForumPost.java entity)
 
 
+
+
 - Each account is only able to delete or edit its own posts.
 - When editing or deleting posts, either refresh the page or press `GET ALL` again. This would automatically refresh locally, but the auto-refresh doesn't work after deploy.
 - Can create an account through Okta or use the provided login below.
