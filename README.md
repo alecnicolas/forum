@@ -21,6 +21,7 @@ Hosted [here](https://forum-app-586.netlify.com/)
 - Many-to-One relationship between ForumPost and User tables. (Found in ForumPost.java entity)
 - Spring -> ORM (JPA) and Dependency Injection
 - Angular -> SPA and Dependency Injection
+- Added basic testing in `ForumControllerTest.java` (Having some issues)
 
 
 ###### General
