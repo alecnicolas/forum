@@ -5,7 +5,7 @@ Forum application that shows a feed of all user posts. Also will allow to filter
 `GET ALL` fetches all forum posts.
 `GET MINE` fetches all forum posts associated with the logged in user.
 
-Tools:
+Technology Stack:
 - Spring
 - Angular
 - MySQL
