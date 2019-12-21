@@ -25,15 +25,15 @@ Hosted [here](https://forum-app-586.netlify.com/)
 
 
 ###### General
-- Each account is only able to delete or edit its own posts.
-- When editing or deleting posts, either refresh the page or press `GET ALL` again. This would automatically refresh locally, but the auto-refresh doesn't work after deploy.
-- Can create an account through Okta or use the provided login below.
+- Each account/email is only able to delete or edit its own posts.
+- When **editing or deleting posts**, either **refresh** the page or press `GET ALL` again. This would automatically refresh locally, but the auto-refresh doesn't work after deploy. (UX problem)
+- Can create an account through Okta or use one of the provided logins below.
 
 
-##### Login Info:
+###### Test Login Info
 
-- User: john.doe@example.com
-- Password: Password1!
----
-- Alt User: howard.washington@example.com
-- Alt Password: Password1!
+1. User: john.doe@example.com
+   - Password: Password1!
+
+2. Alt User: howard.washington@example.com
+   - Alt Password: Password1!
