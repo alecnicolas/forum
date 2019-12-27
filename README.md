@@ -10,7 +10,10 @@ Technology Stack:
 - Angular
 - MySQL
 - Okta
+- Netlify (Frontend)
+- Google AppEngine (Backend & SQL Database)
 
+**Website will not work as the backend is disabled to stop expenses on Google Cloud Platform**
 Hosted [here](https://forum-app-586.netlify.com/)
 
 
