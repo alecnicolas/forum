@@ -1,5 +1,7 @@
 # Forum Application
 
+*NOTE: THIS APPLICATION IS NO LONGER BEING HOSTED*
+
 Forum application that shows a feed of all user posts. Also will allow to filter by email.
 
 `GET ALL` fetches all forum posts.
@@ -13,8 +15,7 @@ Technology Stack:
 - Netlify (Frontend)
 - Google AppEngine (Backend & SQL Database)
 
-**Website will not work as the backend is disabled to stop expenses on Google Cloud Platform**
-- Hosted [here](https://forum-app-586.netlify.com/)
+- *Was* hosted [here](https://forum-app-586.netlify.com/)
 
 
 ## Notes for Professor
